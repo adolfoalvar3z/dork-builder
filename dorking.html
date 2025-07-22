@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Dork Builder - Generador de Consultas Avanzadas | Compatible con Google y DuckDuckGo | Herramienta Hacker Educativa</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Herramienta gratuita para crear Google Dorks avanzados. Generador de consultas de búsqueda para hacking ético, pentesting y ciberseguridad. Compatible con Google y DuckDuckGo. Aprende Google Dorking con ejemplos prácticos.">
+  <meta name="keywords" content="google dork, google dorking, duckduckgo, hacking ético, pentesting, ciberseguridad, osint, reconocimiento, herramientas hacker, búsquedas avanzadas google, búsquedas avanzadas duckduckgo, cybersecurity tools, information gathering">
+  <meta name="author" content="Ninj470">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="Spanish">
+  <meta name="revisit-after" content="7 days">
+  <meta name="distribution" content="global">
+  <meta name="rating" content="general">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Google Dork Builder - Generador de Consultas Avanzadas">
+  <meta property="og:description" content="Herramienta gratuita para crear Google Dorks avanzados. Perfecta para hacking ético, pentesting y aprendizaje en ciberseguridad. Compatible con Google y DuckDuckGo.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ninj470.github.io/google-dork-builder">
+  <meta property="og:image" content="https://ninj470.github.io/google-dork-builder/preview.png">
+  <meta property="og:image:alt" content="Google Dork Builder - Interfaz de usuario con tema hacker">
+  <meta property="og:site_name" content="Google Dork Builder by Ninj470">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Google Dork Builder - Herramienta Hacker Educativa">
+  <meta name="twitter:description" content="Crea Google Dorks avanzados fácilmente. Herramienta gratuita para hacking ético y ciberseguridad. Compatible con Google y DuckDuckGo.">
+  <meta name="twitter:image" content="https://ninj470.github.io/google-dork-builder/preview.png">
+  <meta name="twitter:creator" content="@Ninj470">
+
+  <!-- Additional SEO Meta Tags -->
+  <meta name="theme-color" content="#00ff41">
+  <meta name="msapplication-TileColor" content="#010409">
+  <meta name="application-name" content="Google Dork Builder">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://ninj470.github.io/google-dork-builder">
+
+  <!-- Alternate Language -->
+  <link rel="alternate" hreflang="es" href="https://ninj470.github.io/google-dork-builder/es">
+  <link rel="alternate" hreflang="en" href="https://ninj470.github.io/google-dork-builder/en">
+  <link rel="alternate" hreflang="x-default" href="https://ninj470.github.io/google-dork-builder">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Hacker Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Source+Code+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --hacker-green: #00ff41;
+      --hacker-dark: #0d1117;
+      --hacker-darker: #010409;
+      --hacker-gray: #161b22;
+      --hacker-light-gray: #21262d;
+      --hacker-red: #ff0040;
+      --hacker-cyan: #00ffff;
+      --hacker-yellow: #ffff00;
+      --hacker-orange: #ff8c00;
+      --terminal-bg: rgba(0, 0, 0, 0.9);
+    }    body {
+      font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', monospace;
+      background: var(--hacker-darker);
+      background-image:
+        radial-gradient(circle at 20% 80%, rgba(0, 255, 65, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, var(--hacker-darker) 0%, var(--hacker-dark) 100%);
+      height: 100vh;
+      color: var(--hacker-green);
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><defs><pattern id="matrix" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><text x="10" y="15" font-family="monospace" font-size="12" fill="%2300ff4120" text-anchor="middle">1</text></pattern></defs><rect width="100" height="100" fill="url(%23matrix)"/></svg>') repeat;
+      opacity: 0.03;
+      z-index: -1;
+      animation: matrixFall 20s linear infinite;
+    }
+
+    @keyframes matrixFall {
+      0% { transform: translateY(-100px); }
+      100% { transform: translateY(100px); }
+    }
+
+    .main-container {
+      background: rgba(13, 17, 23, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--hacker-green);
+      border-radius: 10px;
+      box-shadow:
+        0 0 20px rgba(0, 255, 65, 0.3),
+        inset 0 0 20px rgba(0, 255, 65, 0.1);
+      margin: 10px;
+      overflow: hidden;
+      position: relative;
+      height: calc(100vh - 20px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--hacker-green), transparent);
+      animation: scanline 3s linear infinite;
+    }
+
+    @keyframes scanline {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--hacker-dark), var(--hacker-darker));
+      color: var(--hacker-green);
+      padding: 1rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 2px solid var(--hacker-green);
+      flex-shrink: 0;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 98px,
+        rgba(0, 255, 65, 0.1) 100px
+      );
+      animation: scanlines 2s linear infinite;
+    }
+
+    @keyframes scanlines {
+      0% { transform: translateX(-100px); }
+      100% { transform: translateX(100px); }
+    }
+
+    .header h1 {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      font-weight: 700;
+      font-size: 1.8rem;
+      text-shadow: 0 0 10px var(--hacker-green);
+      font-family: 'Fira Code', monospace;
+      animation: glitch 3s infinite;
+    }
+
+    @keyframes glitch {
+      0%, 90%, 100% { transform: translate(0); }
+      10% { transform: translate(-2px, 2px); }
+      20% { transform: translate(2px, -2px); }
+      30% { transform: translate(-2px, 2px); }
+      40% { transform: translate(2px, -2px); }
+    }
+
+    .header p {
+      position: relative;
+      z-index: 2;
+      margin: 0.2rem 0 0 0;
+      opacity: 0.8;
+      font-size: 0.9rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--hacker-cyan);
+    }
+
+    .sidebar {
+      background: var(--hacker-gray);
+      height: calc(100vh - 140px);
+      padding: 1rem;
+      border-right: 1px solid var(--hacker-green);
+      position: relative;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .sidebar::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .sidebar::-webkit-scrollbar-track {
+      background: var(--hacker-darker);
+      border-radius: 4px;
+    }
+
+    .sidebar::-webkit-scrollbar-thumb {
+      background: var(--hacker-green);
+      border-radius: 4px;
+      box-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
+    }
+
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: var(--hacker-cyan);
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+
+    .sidebar::before {
+      content: '> ';
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      color: var(--hacker-green);
+      font-family: 'Fira Code', monospace;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    .sidebar h5 {
+      color: var(--hacker-cyan);
+      font-family: 'Fira Code', monospace;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-left: 2rem;
+    }
+
+    .dork-card {
+      background: var(--terminal-bg);
+      border: 1px solid var(--hacker-green);
+      border-radius: 5px;
+      margin-bottom: 1rem;
+      box-shadow:
+        0 0 10px rgba(0, 255, 65, 0.2),
+        inset 0 0 10px rgba(0, 255, 65, 0.1);
+      transition: all 0.3s ease;
+      cursor: grab;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .dork-card:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 20px rgba(0, 255, 65, 0.4),
+        inset 0 0 20px rgba(0, 255, 65, 0.2);
+      border-color: var(--hacker-cyan);
+    }
+
+    .dork-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--hacker-green), var(--hacker-cyan));
+    }
+
+    .dork-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .dork-title {
+      font-weight: 600;
+      color: var(--hacker-green);
+      font-size: 0.85rem;
+      margin: 0;
+      font-family: 'Fira Code', monospace;
+      text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+    }
+
+    .dork-title strong {
+      color: var(--hacker-cyan);
+    }
+
+    .info-btn {
+      width: 24px;
+      height: 24px;
+      border-radius: 3px;
+      border: 1px solid var(--hacker-green);
+      background: var(--terminal-bg);
+      color: var(--hacker-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
+    }
+
+    .info-btn:hover {
+      background: var(--hacker-green);
+      color: var(--hacker-dark);
+      box-shadow: 0 0 10px rgba(0, 255, 65, 0.6);
+      transform: scale(1.1);
+    }
+
+    .form-control {
+      background: var(--hacker-darker) !important;
+      border: 1px solid var(--hacker-green) !important;
+      color: var(--hacker-green) !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      border-radius: 3px !important;
+    }
+
+    .form-control:focus {
+      background: var(--hacker-darker) !important;
+      border-color: var(--hacker-cyan) !important;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.3) !important;
+      color: var(--hacker-cyan) !important;
+    }
+
+    .form-control::placeholder {
+      color: rgba(0, 255, 65, 0.5) !important;
+    }
+
+    .workspace {
+      padding: 1rem;
+      background: var(--hacker-gray);
+      position: relative;
+      height: calc(100vh - 140px);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .workspace h5 {
+      color: var(--hacker-cyan);
+      font-family: 'Fira Code', monospace;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .drop-zone {
+      height: 45%;
+      min-height: 200px;
+      border: 2px dashed var(--hacker-green);
+      border-radius: 5px;
+      background: var(--terminal-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .drop-zone::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(0, 255, 65, 0.05) 10px,
+        rgba(0, 255, 65, 0.05) 20px
+      );
+    }
+
+    .drop-zone.dragover {
+      border-color: var(--hacker-cyan);
+      background: rgba(0, 255, 255, 0.1);
+      box-shadow:
+        0 0 20px rgba(0, 255, 255, 0.4),
+        inset 0 0 20px rgba(0, 255, 255, 0.2);
+      transform: scale(1.02);
+    }
+
+    .drop-zone-content {
+      text-align: center;
+      color: var(--hacker-green);
+      z-index: 2;
+      position: relative;
+    }
+
+    .drop-zone-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.7;
+      color: var(--hacker-cyan);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    .output-section {
+      background: var(--terminal-bg);
+      color: var(--hacker-green);
+      border: 1px solid var(--hacker-green);
+      border-radius: 5px;
+      padding: 1rem;
+      margin-top: 1rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 0 20px rgba(0, 255, 65, 0.2),
+        inset 0 0 20px rgba(0, 255, 65, 0.1);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .output-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 65, 0.03) 2px,
+        rgba(0, 255, 65, 0.03) 4px
+      );
+      z-index: 1;
+    }
+
+    .output-section h5 {
+      color: var(--hacker-cyan);
+      font-family: 'Fira Code', monospace;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .query-display {
+      background: var(--hacker-darker);
+      border: 1px solid var(--hacker-green);
+      border-radius: 3px;
+      padding: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      word-break: break-all;
+      min-height: 40px;
+      position: relative;
+      z-index: 2;
+      color: var(--hacker-green);
+      text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+      flex: 1;
+    }
+
+    .search-btn {
+      background: linear-gradient(135deg, var(--hacker-green), rgba(0, 255, 65, 0.8));
+      border: 1px solid var(--hacker-green);
+      border-radius: 3px;
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 2;
+      color: var(--hacker-dark);
+      font-family: 'Fira Code', monospace;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+    }
+
+    .search-btn:hover {
+      background: var(--hacker-green);
+      color: var(--hacker-dark);
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .search-btn-alt {
+      background: linear-gradient(135deg, var(--hacker-orange), rgba(255, 140, 0, 0.8));
+      border: 1px solid var(--hacker-orange);
+      border-radius: 3px;
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 2;
+      color: var(--hacker-dark);
+      font-family: 'Fira Code', monospace;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+    }
+
+    .search-btn-alt:hover {
+      background: var(--hacker-orange);
+      color: var(--hacker-dark);
+      box-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-light {
+      border: 1px solid var(--hacker-cyan) !important;
+      color: var(--hacker-cyan) !important;
+      background: transparent !important;
+      font-family: 'Fira Code', monospace !important;
+      text-transform: uppercase !important;
+      letter-spacing: 1px !important;
+      border-radius: 3px !important;
+    }
+
+    .btn-outline-light:hover {
+      background: var(--hacker-cyan) !important;
+      color: var(--hacker-dark) !important;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.6) !important;
+      transform: translateY(-2px) !important;
+    }
+
+    .custom-tooltip {
+      position: fixed;
+      background: var(--terminal-bg);
+      color: var(--hacker-green);
+      border: 1px solid var(--hacker-green);
+      padding: 1rem 1.25rem;
+      border-radius: 3px;
+      font-size: 0.85rem;
+      z-index: 1050;
+      max-width: 300px;
+      box-shadow:
+        0 0 20px rgba(0, 255, 65, 0.4),
+        inset 0 0 10px rgba(0, 255, 65, 0.1);
+      backdrop-filter: blur(10px);
+      display: none;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .custom-tooltip::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 20px;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 5px solid var(--hacker-green);
+    }
+
+    .dropped-dork {
+      background: var(--terminal-bg);
+      border: 1px solid var(--hacker-cyan);
+      border-radius: 3px;
+      padding: 1rem;
+      margin: 0.5rem;
+      box-shadow:
+        0 0 10px rgba(0, 255, 255, 0.3),
+        inset 0 0 10px rgba(0, 255, 255, 0.1);
+      position: relative;
+    }
+
+    .dropped-dork .dork-title {
+      color: var(--hacker-cyan);
+    }
+
+    .remove-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      width: 20px;
+      height: 20px;
+      border-radius: 3px;
+      border: 1px solid var(--hacker-red);
+      background: var(--terminal-bg);
+      color: var(--hacker-red);
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .remove-btn:hover {
+      background: var(--hacker-red);
+      color: var(--hacker-dark);
+      box-shadow: 0 0 10px rgba(255, 0, 64, 0.6);
+    }
+
+    @media (max-width: 768px) {
+      .main-container {
+        margin: 5px;
+        height: calc(100vh - 10px);
+      }
+
+      .header h1 {
+        font-size: 1.5rem;
+      }
+
+      .sidebar, .workspace {
+        padding: 0.5rem;
+        height: calc(100vh - 120px);
+      }
+
+      .drop-zone {
+        height: 40%;
+        min-height: 150px;
+      }
+    }
+
+    /* Make main content area flexible */
+    #main-content {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .footer {
+      background: linear-gradient(135deg, var(--hacker-darker), var(--hacker-dark));
+      border-top: 2px solid var(--hacker-green);
+      padding: 2rem 0;
+      margin-top: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 98px,
+        rgba(0, 255, 65, 0.05) 100px
+      );
+      animation: scanlines 3s linear infinite reverse;
+    }
+
+    .footer-content {
+      position: relative;
+      z-index: 2;
+      color: var(--hacker-green);
+      font-family: 'Fira Code', monospace;
+    }
+
+    .footer-content p {
+      margin: 0.5rem 0;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .footer-content .author {
+      color: var(--hacker-cyan);
+      font-weight: 600;
+      text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+      animation: pulse 2s infinite;
+    }
+
+    .footer-content i {
+      color: var(--hacker-cyan);
+      margin-right: 0.5rem;
+    }
+
+    .footer-content strong {
+      color: var(--hacker-green);
+      text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+    }
+
+    /* Accessibility helpers */
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .sr-only-focusable:focus {
+      position: static !important;
+      width: auto !important;
+      height: auto !important;
+      padding: 0.5rem 1rem !important;
+      margin: 0 !important;
+      overflow: visible !important;
+      clip: auto !important;
+      white-space: normal !important;
+      background: var(--hacker-green) !important;
+      color: var(--hacker-dark) !important;
+      text-decoration: none !important;
+      z-index: 9999 !important;
+    }
+
+    /* Predefined Dorks Styles */
+    .predefined-dork {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: grab;
+    }
+
+    .predefined-dork:active {
+      cursor: grabbing;
+    }
+
+    .predefined-dork::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--hacker-orange), var(--hacker-yellow));
+    }
+
+    .predefined-dork:hover {
+      transform: translateX(5px);
+      box-shadow: 0 0 15px rgba(255, 140, 0, 0.4) !important;
+    }
+
+    .predefined-dork:hover .card-body {
+      border-color: var(--hacker-yellow) !important;
+      background: rgba(255, 140, 0, 0.1) !important;
+    }
+
+    .predefined-dork:hover .bi-clipboard {
+      animation: pulse 0.5s ease-in-out;
+    }
+
+    .predefined-dork .dork-title {
+      text-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
+    }
+
+    .predefined-dork code {
+      background: rgba(255, 255, 0, 0.1);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 0, 0.2);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+    }
+
+    /* Button styles for predefined dorks */
+    .predefined-dork .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(0, 255, 65, 0.6);
+    }
+
+    .predefined-dork .btn:active {
+      transform: scale(0.95);
+    }
+
+    .predefined-dork .btn i {
+      pointer-events: none;
+    }
+
+    /* Drag visual feedback for predefined dorks */
+    .predefined-dork.dragging {
+      opacity: 0.7;
+      transform: rotate(5deg) scale(1.05);
+      z-index: 1000;
+    }
+
+    /* Container for multiple components (hidden helper) */
+    .predefined-components-container {
+      display: none;
+    }
+  </style>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Google Dork Builder",
+    "alternateName": "D0RK H4CK3R T00L",
+    "description": "Herramienta gratuita para crear Google Dorks avanzados. Generador de consultas de búsqueda para hacking ético, pentesting y ciberseguridad educativa. Compatible con Google y DuckDuckGo.",
+    "url": "https://ninj470.github.io/google-dork-builder",
+    "author": {
+      "@type": "Person",
+      "name": "Ninj470",
+      "url": "https://github.com/ninj470"
+    },
+    "creator": {
+      "@type": "Person",
+      "name": "Ninj470"
+    },
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "Web Browser",
+    "softwareVersion": "2.0",
+    "dateCreated": "2025-07-17",
+    "dateModified": "2025-07-17",
+    "inLanguage": "es",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Generación de Google Dorks",
+      "Interfaz drag and drop",
+      "Múltiples operadores de búsqueda",
+      "Copiar consultas al portapapeles",
+      "Búsqueda directa en Google",
+      "Búsqueda directa en DuckDuckGo",
+      "Interfaz temática hacker",
+      "Herramienta educativa"
+    ],
+    "screenshot": "https://ninj470.github.io/google-dork-builder/screenshot.png",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "157"
+    },
+    "keywords": "google dork, dorking, duckduckgo, hacking ético, pentesting, osint, ciberseguridad, herramientas hacker"
+  }
+  </script>
+</head>
+<body>
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="sr-only sr-only-focusable">Saltar al contenido principal</a>
+
+  <div class="container-fluid">
+    <div class="main-container">
+      <!-- Header -->
+      <header class="header">
+        <h1><i class="bi bi-terminal" aria-hidden="true"></i> D0RK H4CK3R T00L</h1>
+        <p>// Advanced Google Dorking Framework v2.0 //</p>
+        <p class="sr-only">Generador de consultas avanzadas de Google para hacking ético y educación en ciberseguridad. Compatible con Google y DuckDuckGo.</p>
+      </header>
+
+      <!-- Main Content -->
+      <main id="main-content" class="row g-0">
+        <!-- Sidebar -->
+        <aside class="col-lg-4 sidebar" role="complementary">
+          <h2 class="h5 mb-4"><i class="bi bi-code-square" aria-hidden="true"></i> [OPERATORS_AVAILABLE]</h2>
+
+          <div class="dork-card" draggable="true" data-type="site">
+            <div class="card-body p-3">
+              <div class="dork-header">
+                <h6 class="dork-title"><strong>site:</strong> Limita la búsqueda a un sitio específico</h6>
+                <button class="info-btn" onclick="showTooltip(event, 'Ejemplos: site:facebook.com, site:github.com, site:edu')">
+                  <i class="bi bi-question"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control form-control-sm" placeholder="example.com">
+            </div>
+          </div>
+
+          <div class="dork-card" draggable="true" data-type="inurl">
+            <div class="card-body p-3">
+              <div class="dork-header">
+                <h6 class="dork-title"><strong>inurl:</strong> Busca en la URL</h6>
+                <button class="info-btn" onclick="showTooltip(event, 'Ejemplos: inurl:login, inurl:admin, inurl:config')">
+                  <i class="bi bi-question"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control form-control-sm" placeholder="login">
+            </div>
+          </div>
+
+          <div class="dork-card" draggable="true" data-type="intitle">
+            <div class="card-body p-3">
+              <div class="dork-header">
+                <h6 class="dork-title"><strong>intitle:</strong> Busca en el título de la página</h6>
+                <button class="info-btn" onclick="showTooltip(event, 'Ejemplos: intitle:admin, intitle:dashboard, intitle:index of')">
+                  <i class="bi bi-question"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control form-control-sm" placeholder="admin">
+            </div>
+          </div>
+
+          <div class="dork-card" draggable="true" data-type="allintitle">
+            <div class="card-body p-3">
+              <div class="dork-header">
+                <h6 class="dork-title"><strong>allintitle:</strong> Todos los términos deben estar en el título</h6>
+                <button class="info-btn" onclick="showTooltip(event, 'Ejemplos: allintitle:login panel, allintitle:admin dashboard')">
+                  <i class="bi bi-question"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control form-control-sm" placeholder="login panel">
+            </div>
+          </div>
+
+          <div class="dork-card" draggable="true" data-type="filetype">
+            <div class="card-body p-3">
+              <div class="dork-header">
+                <h6 class="dork-title"><strong>filetype:</strong> Buscar archivos por tipo</h6>
+                <button class="info-btn" onclick="showTooltip(event, 'Ejemplos: filetype:pdf, filetype:doc, filetype:sql, filetype:log')">
+                  <i class="bi bi-question"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control form-control-sm" placeholder="pdf">
+            </div>
+          </div>
+
+          <div class="dork-card" draggable="true" data-type="allintext">
+            <div class="card-body p-3">
+              <div class="dork-header">
+                <h6 class="dork-title"><strong>allintext:</strong> Todos los términos deben estar en el contenido</h6>
+                <button class="info-btn" onclick="showTooltip(event, 'Ejemplos: allintext:password database, allintext:api key secret')">
+                  <i class="bi bi-question"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control form-control-sm" placeholder="password">
+            </div>
+          </div>
+
+          <div class="dork-card" draggable="true" data-type="inanchor">
+            <div class="card-body p-3">
+              <div class="dork-header">
+                <h6 class="dork-title"><strong>inanchor:</strong> Buscar texto en los enlaces</h6>
+                <button class="info-btn" onclick="showTooltip(event, 'Ejemplos: inanchor:download, inanchor:click here, inanchor:more info')">
+                  <i class="bi bi-question"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control form-control-sm" placeholder="download">
+            </div>
+          </div>
+
+          <div class="dork-card" draggable="true" data-type="link">
+            <div class="card-body p-3">
+              <div class="dork-header">
+                <h6 class="dork-title"><strong>link:</strong> Encuentra páginas que enlazan a otra</h6>
+                <button class="info-btn" onclick="showTooltip(event, 'Ejemplos: link:target.com, link:example.org')">
+                  <i class="bi bi-question"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control form-control-sm" placeholder="target.com">
+            </div>
+          </div>
+
+          <div class="dork-card" draggable="true" data-type="daterange">
+            <div class="card-body p-3">
+              <div class="dork-header">
+                <h6 class="dork-title"><strong>daterange:</strong> Buscar entre rangos de fechas (formato juliano)</h6>
+                <button class="info-btn" onclick="showTooltip(event, 'Ejemplos: daterange:2450000-2455000 (fechas en formato juliano)')">
+                  <i class="bi bi-question"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control form-control-sm" placeholder="2450000-2455000">
+            </div>
+          </div>
+
+          <div class="dork-card" draggable="true" data-type="numrange">
+            <div class="card-body p-3">
+              <div class="dork-header">
+                <h6 class="dork-title"><strong>numrange:</strong> Buscar entre valores numéricos</h6>
+                <button class="info-btn" onclick="showTooltip(event, 'Ejemplos: numrange:100..200, numrange:2000..2024')">
+                  <i class="bi bi-question"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control form-control-sm" placeholder="100..200">
+            </div>
+          </div>
+
+          <div class="dork-card" draggable="true" data-type="ext">
+            <div class="card-body p-3">
+              <div class="dork-header">
+                <h6 class="dork-title"><strong>ext:</strong> Buscar por extensión de archivo</h6>
+                <button class="info-btn" onclick="showTooltip(event, 'Ejemplos: ext:log, ext:txt, ext:config, ext:bak')">
+                  <i class="bi bi-question"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control form-control-sm" placeholder="log">
+            </div>
+          </div>
+
+          <div class="dork-card" draggable="true" data-type="+">
+            <div class="card-body p-3">
+              <div class="dork-header">
+                <h6 class="dork-title"><strong>+ (incluir)</strong> Obliga a incluir una palabra común</h6>
+                <button class="info-btn" onclick="showTooltip(event, 'Ejemplos: +password, +database, +config')">
+                  <i class="bi bi-question"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control form-control-sm" placeholder="must">
+            </div>
+          </div>
+
+          <div class="dork-card" draggable="true" data-type="-">
+            <div class="card-body p-3">
+              <div class="dork-header">
+                <h6 class="dork-title"><strong>- (excluir)</strong> Excluir un término</h6>
+                <button class="info-btn" onclick="showTooltip(event, 'Ejemplos: -site:example.com, -filetype:html')">
+                  <i class="bi bi-question"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control form-control-sm" placeholder="exclude">
+            </div>
+          </div>
+
+          <div class="dork-card" draggable="true" data-type="\"">
+            <div class="card-body p-3">
+              <div class="dork-header">
+                <h6 class="dork-title"><strong>"texto"</strong> Buscar frase exacta</h6>
+                <button class="info-btn" onclick="showTooltip(event, 'Ejemplos: &quot;admin panel&quot;, &quot;database error&quot;, &quot;index of&quot;')">
+                  <i class="bi bi-question"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control form-control-sm" placeholder="exact phrase">
+            </div>
+          </div>
+
+          <div class="dork-card" draggable="true" data-type="*">
+            <div class="card-body p-3">
+              <div class="dork-header">
+                <h6 class="dork-title"><strong>*</strong> Coincide con cualquier palabra</h6>
+                <button class="info-btn" onclick="showTooltip(event, 'Ejemplos: admin * panel, password * database')">
+                  <i class="bi bi-question"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control form-control-sm" placeholder="any">
+            </div>
+          </div>
+
+          <div class="dork-card" draggable="true" data-type="|">
+            <div class="card-body p-3">
+              <div class="dork-header">
+                <h6 class="dork-title"><strong>|</strong> Operador OR lógico</h6>
+                <button class="info-btn" onclick="showTooltip(event, 'Ejemplos: admin|administrator, login|signin')">
+                  <i class="bi bi-question"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control form-control-sm" placeholder="term">
+            </div>
+          </div>
+
+
+        </aside>
+
+        <!-- Workspace -->
+        <section class="col-lg-8 workspace" role="main">
+          <h2 class="h5 mb-4"><i class="bi bi-terminal-fill" aria-hidden="true"></i> [QUERY_CONSTRUCTOR]</h2>
+
+          <div class="drop-zone" id="dropZone" ondragover="allowDrop(event)" ondrop="drop(event)"
+               role="application" aria-label="Zona de construcción de consultas Google Dork"
+               aria-describedby="drop-zone-help">
+            <div class="drop-zone-content">
+              <i class="bi bi-download drop-zone-icon" aria-hidden="true"></i>
+              <h3 class="h5">>> ARRASTRA OPERADORES AQUÍ <<</h3>
+              <p class="mb-0" id="drop-zone-help">// Combina operadores para crear consultas avanzadas //</p>
+            </div>
+          </div>
+
+          <div class="output-section">
+            <h3 class="h5 mb-3"><i class="bi bi-terminal" aria-hidden="true"></i> [QUERY_OUTPUT]</h3>
+            <div class="query-display" id="query" role="textbox" aria-live="polite" aria-label="Consulta Google Dork generada"></div>
+            <div class="mt-3" role="group" aria-label="Acciones de consulta">
+              <div class="d-flex gap-2 mb-3">
+                <button class="btn search-btn" onclick="searchGoogle()" aria-describedby="search-help">
+                  <i class="bi bi-google" aria-hidden="true"></i> BUSCAR EN GOOGLE
+                </button>
+                <button class="btn search-btn-alt" onclick="searchDuckDuckGo()" aria-describedby="duckduckgo-help">
+                  <i class="bi bi-search" aria-hidden="true"></i> BUSCAR EN DUCKDUCKGO
+                </button>
+              </div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-outline-light btn-sm" onclick="copyQuery()">
+                  <i class="bi bi-clipboard" aria-hidden="true"></i> COPIAR CONSULTA
+                </button>
+                <button class="btn btn-outline-light btn-sm" onclick="clearQuery()">
+                  <i class="bi bi-trash" aria-hidden="true"></i> LIMPIAR TODO
+                </button>
+              </div>
+              <span id="search-help" class="sr-only">Ejecutar búsqueda en Google con la consulta generada</span>
+              <span id="duckduckgo-help" class="sr-only">Ejecutar búsqueda en DuckDuckGo con la consulta generada</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let dragged;
+    let currentTooltip = null;
+    let dragCounter = 0;
+
+    // Initialize drag and drop functionality
+    document.querySelectorAll(".dork-card, .predefined-dork").forEach(el => {
+      el.addEventListener("dragstart", event => {
+        // Handle predefined dorks differently
+        if (el.classList.contains('predefined-dork')) {
+          const query = el.getAttribute('data-query');
+
+          // Create a container for multiple components
+          const container = document.createElement('div');
+          container.className = 'predefined-components-container';
+          container.setAttribute('data-original-query', query);
+
+          // Parse the query into components
+          const components = parseQuery(query);
+
+          // Create individual dork elements for each component
+          components.forEach(component => {
+            const dorkElement = createDorkElement(component.type, component.value);
+            if (dorkElement) {
+              container.appendChild(dorkElement);
+            }
+          });
+
+          dragged = container;
+        } else {
+          // Regular dork card handling
+          dragged = el.cloneNode(true);
+          dragged.classList.add('dropped-dork');
+          dragged.classList.remove('dork-card');
+
+          // Add remove button
+          const removeBtn = document.createElement('button');
+          removeBtn.className = 'remove-btn';
+          removeBtn.innerHTML = '<i class="bi bi-x"></i>';
+          removeBtn.onclick = function() {
+            this.parentElement.remove();
+            updateQuery();
+          };
+          dragged.appendChild(removeBtn);
+
+          // Re-add event listeners
+          const input = dragged.querySelector("input");
+          if (input) {
+            input.addEventListener("input", updateQuery);
+          }
+
+          const infoBtn = dragged.querySelector(".info-btn");
+          if (infoBtn) {
+            const tooltipText = infoBtn.getAttribute("onclick").match(/'([^']+)'/)[1];
+            infoBtn.setAttribute("onclick", `showTooltip(event, '${tooltipText}')`);
+          }
+        }
+
+        // Set drag effect
+        event.dataTransfer.effectAllowed = "copy";
+      });
+    });
+
+    // Drag and drop handlers
+    function allowDrop(event) {
+      event.preventDefault();
+      event.dataTransfer.dropEffect = "copy";
+    }
+
+    function drop(event) {
+      event.preventDefault();
+      if (dragged) {
+        const dropZone = document.getElementById("dropZone");
+
+        // Clear placeholder content if this is the first drop
+        if (dropZone.querySelector('.drop-zone-content')) {
+          dropZone.innerHTML = '';
+          dropZone.style.height = '45%';
+          dropZone.style.minHeight = '200px';
+          dropZone.style.display = 'flex';
+          dropZone.style.flexWrap = 'wrap';
+          dropZone.style.alignItems = 'flex-start';
+          dropZone.style.justifyContent = 'flex-start';
+        }
+
+        // Handle container with multiple components
+        if (dragged.classList && dragged.classList.contains('predefined-components-container')) {
+          const components = dragged.querySelectorAll('.dropped-dork');
+          components.forEach(component => {
+            dropZone.appendChild(component);
+          });
+
+          // Show alert with original query
+          const originalQuery = dragged.getAttribute('data-original-query');
+          showAlert(`[DRAG&DROP] Dork descompuesto: ${components.length} operadores añadidos`, "success");
+        } else {
+          // Single component
+          dropZone.appendChild(dragged);
+        }
+
+        updateQuery();
+        dragged = null;
+      }
+      dropZone.classList.remove('dragover');
+    }
+
+    // Enhanced drag visual feedback
+    document.getElementById('dropZone').addEventListener('dragenter', function(e) {
+      e.preventDefault();
+      dragCounter++;
+      this.classList.add('dragover');
+    });
+
+    document.getElementById('dropZone').addEventListener('dragleave', function(e) {
+      dragCounter--;
+      if (dragCounter === 0) {
+        this.classList.remove('dragover');
+      }
+    });
+
+    // Update query function
+    function updateQuery() {
+      const zone = document.getElementById("dropZone");
+      const dorkElements = zone.querySelectorAll(".dropped-dork");
+
+      if (dorkElements.length === 0) {
+        // Restore initial drop zone appearance
+        zone.innerHTML = `
+          <div class="drop-zone-content">
+            <i class="bi bi-download drop-zone-icon"></i>
+            <h5>>> ARRASTRA OPERADORES AQUÍ <<</h5>
+            <p class="mb-0">// Combina operadores para crear consultas avanzadas //</p>
+          </div>
+        `;
+        zone.style.height = '45%';
+        zone.style.minHeight = '200px';
+        zone.style.display = 'flex';
+        zone.style.flexWrap = 'nowrap';
+        zone.style.alignItems = 'center';
+        zone.style.justifyContent = 'center';
+        document.getElementById("query").textContent = "";
+        return;
+      }
+
+      const parts = [...dorkElements].map(el => {
+        const type = el.getAttribute("data-type");
+        const value = el.querySelector("input").value.trim();
+
+        if (value) {
+          // Handle special cases
+          if (type === '"') {
+            return `"${value}"`;
+          } else if (type === '+') {
+            return `+${value}`;
+          } else if (type === '-') {
+            return `-${value}`;
+          } else if (type === '*') {
+            return value.includes('*') ? value : `${value} *`;
+          } else if (type === '|') {
+            return value.includes('|') ? value : `${value}|`;
+          } else {
+            return `${type}:${value}`;
+          }
+        }
+        return '';
+      }).filter(part => part);
+
+      const query = parts.join(" ");
+      document.getElementById("query").textContent = query || "[INCOMPLETO]";
+    }
+
+    // Copy predefined dork function
+    function copyPredefinedDork(element) {
+      const query = element.getAttribute('data-query');
+
+      if (query) {
+        // Option 1: Copy to clipboard (original behavior)
+        navigator.clipboard.writeText(query).then(() => {
+          showAlert(`[ÉXITO] Dork copiado al portapapeles: ${query}`, "success");
+        }).catch(() => {
+          showAlert("[ERROR] Error al copiar el dork", "danger");
+        });
+
+        // Option 2: Parse and add to constructor
+        parseAndAddToConstructor(query);
+      }
+    }
+
+    // New function to parse dork and add components to constructor
+    function parseAndAddToConstructor(query) {
+      const dropZone = document.getElementById("dropZone");
+
+      // Clear existing content if needed
+      if (dropZone.querySelector('.drop-zone-content')) {
+        dropZone.innerHTML = '';
+        dropZone.style.height = '45%';
+        dropZone.style.minHeight = '200px';
+        dropZone.style.display = 'flex';
+        dropZone.style.flexWrap = 'wrap';
+        dropZone.style.alignItems = 'flex-start';
+        dropZone.style.justifyContent = 'flex-start';
+      } else {
+        // Clear existing elements to avoid duplication
+        dropZone.innerHTML = '';
+        dropZone.style.height = '45%';
+        dropZone.style.minHeight = '200px';
+        dropZone.style.display = 'flex';
+        dropZone.style.flexWrap = 'wrap';
+        dropZone.style.alignItems = 'flex-start';
+        dropZone.style.justifyContent = 'flex-start';
+      }
+
+      // Parse the query into components
+      const components = parseQuery(query);
+
+      // Add each component to the drop zone
+      components.forEach(component => {
+        const dorkElement = createDorkElement(component.type, component.value);
+        if (dorkElement) {
+          dropZone.appendChild(dorkElement);
+        }
+      });
+
+      // Update the query display
+      updateQuery();
+
+      // Visual feedback
+      showAlert(`[CONSTRUCTOR] Dork cargado: ${components.length} operadores añadidos`, "info");
+    }
+
+    // Function to parse query string into components
+    function parseQuery(query) {
+      const components = [];
+      let remaining = query;
+
+      // First, handle quoted phrases
+      const quotedMatches = [...remaining.matchAll(/"([^"]+)"/g)];
+      quotedMatches.forEach(match => {
+        components.push({ type: '"', value: match[1] });
+        remaining = remaining.replace(match[0], '');
+      });
+
+      // Check for OR operators in the original query
+      if (query.includes(' | ')) {
+        // Handle OR operations - create multiple components for each term
+        const orParts = query.split(' | ');
+        orParts.forEach(part => {
+          const trimmedPart = part.trim();
+          if (trimmedPart && !quotedMatches.some(match => match[0] === `"${trimmedPart}"`)) {
+            // Check if it's an operator:value format
+            if (trimmedPart.includes(':')) {
+              const [operator, value] = trimmedPart.split(':');
+              components.push({ type: operator, value: value.replace(/"/g, '') });
+            } else {
+              // It's a plain term, treat as quoted search
+              components.push({ type: '"', value: trimmedPart.replace(/"/g, '') });
+            }
+          }
+        });
+
+        // Add OR operator as a separate component if we have multiple parts
+        if (orParts.length > 1) {
+          components.push({ type: '|', value: orParts.map(p => p.trim().replace(/"/g, '')).join(' | ') });
+        }
+
+        return components;
+      }
+
+      // Regular expressions for different operators
+      const patterns = [
+        { type: 'site', regex: /site:([^\s]+)/g },
+        { type: 'inurl', regex: /inurl:([^\s]+)/g },
+        { type: 'intitle', regex: /intitle:([^\s]+)/g },
+        { type: 'allintitle', regex: /allintitle:([^\s]+)/g },
+        { type: 'filetype', regex: /filetype:([^\s]+)/g },
+        { type: 'ext', regex: /ext:([^\s]+)/g },
+        { type: 'allintext', regex: /allintext:([^\s]+)/g },
+        { type: 'inanchor', regex: /inanchor:([^\s]+)/g },
+        { type: 'intext', regex: /intext:([^\s]+)/g },
+        { type: 'link', regex: /link:([^\s]+)/g },
+        { type: 'daterange', regex: /daterange:([^\s]+)/g },
+        { type: 'numrange', regex: /numrange:([^\s]+)/g }
+      ];
+
+      // Extract components based on patterns
+      patterns.forEach(pattern => {
+        let match;
+        while ((match = pattern.regex.exec(remaining)) !== null) {
+          components.push({ type: pattern.type, value: match[1] });
+          remaining = remaining.replace(match[0], '');
+        }
+      });
+
+      // Handle exclude (-) and include (+) operators
+      const excludeMatches = [...remaining.matchAll(/-([^\s]+)/g)];
+      excludeMatches.forEach(match => {
+        components.push({ type: '-', value: match[1] });
+        remaining = remaining.replace(match[0], '');
+      });
+
+      const includeMatches = [...remaining.matchAll(/\+([^\s]+)/g)];
+      includeMatches.forEach(match => {
+        components.push({ type: '+', value: match[1] });
+        remaining = remaining.replace(match[0], '');
+      });
+
+      // Handle remaining words as general text in quotes
+      const words = remaining.trim().split(/\s+/).filter(word => word.length > 0 && !word.includes(':'));
+      if (words.length > 0) {
+        components.push({ type: '"', value: words.join(' ') });
+      }
+
+      return components;
+    }
+
+    // Function to create a dork element from type and value
+    function createDorkElement(type, value) {
+      // Find the template card for this type
+      const templateCard = document.querySelector(`[data-type="${type}"]`);
+      if (!templateCard) {
+        // For unsupported types, create a generic quoted search
+        if (type === 'general') {
+          const quotedTemplate = document.querySelector(`[data-type='"']`);
+          if (quotedTemplate) {
+            return createDorkFromTemplate(quotedTemplate, value);
+          }
+        }
+        return null;
+      }
+
+      return createDorkFromTemplate(templateCard, value);
+    }
+
+    // Function to create dropped dork from template
+    function createDorkFromTemplate(template, value) {
+      const cloned = template.cloneNode(true);
+      cloned.classList.add('dropped-dork');
+      cloned.classList.remove('dork-card');
+      cloned.removeAttribute('draggable');
+
+      // Set the input value
+      const input = cloned.querySelector('input');
+      if (input) {
+        input.value = value;
+        input.addEventListener('input', updateQuery);
+      }
+
+      // Add remove button
+      const removeBtn = document.createElement('button');
+      removeBtn.className = 'remove-btn';
+      removeBtn.innerHTML = '<i class="bi bi-x"></i>';
+      removeBtn.onclick = function() {
+        this.parentElement.remove();
+        updateQuery();
+      };
+      cloned.appendChild(removeBtn);
+
+      // Update info button
+      const infoBtn = cloned.querySelector('.info-btn');
+      if (infoBtn) {
+        const originalOnclick = infoBtn.getAttribute('onclick');
+        if (originalOnclick) {
+          const tooltipMatch = originalOnclick.match(/'([^']+)'/);
+          if (tooltipMatch) {
+            infoBtn.setAttribute('onclick', `showTooltip(event, '${tooltipMatch[1]}')`);
+          }
+        }
+      }
+
+      return cloned;
+    }
+
+    // Function to only copy to clipboard (without loading to constructor)
+    function copyToClipboard(element) {
+      const query = element.getAttribute('data-query');
+
+      if (query) {
+        navigator.clipboard.writeText(query).then(() => {
+          // Visual feedback
+          element.style.transform = 'scale(0.95)';
+          element.style.boxShadow = '0 0 20px rgba(0, 255, 255, 0.6)';
+
+          setTimeout(() => {
+            element.style.transform = '';
+            element.style.boxShadow = '';
+          }, 200);
+
+          showAlert(`[PORTAPAPELES] Dork copiado: ${query}`, "info");
+        }).catch(() => {
+          showAlert("[ERROR] Error al copiar el dork", "danger");
+        });
+      }
+    }
+
+    // Enhanced search function to handle predefined queries
+    function searchGoogle() {
+      const query = document.getElementById("query").textContent;
+
+      if (query && query !== "" && query !== "[INCOMPLETO]") {
+        const encoded = encodeURIComponent(query);
+        window.open(`https://www.google.com/search?q=${encoded}`, "_blank");
+        showAlert("[GOOGLE] Búsqueda ejecutada en Google", "success");
+      } else {
+        // Show Bootstrap toast or alert
+        showAlert("[ERROR] ¡Construye una consulta válida primero, h4ck3r!", "danger");
+      }
+    }
+
+    // DuckDuckGo search function
+    function searchDuckDuckGo() {
+      const query = document.getElementById("query").textContent;
+
+      if (query && query !== "" && query !== "[INCOMPLETO]") {
+        const encoded = encodeURIComponent(query);
+        window.open(`https://duckduckgo.com/?q=${encoded}`, "_blank");
+        showAlert("[DUCKDUCKGO] Búsqueda ejecutada en DuckDuckGo", "info");
+      } else {
+        // Show Bootstrap toast or alert
+        showAlert("[ERROR] ¡Construye una consulta válida primero, h4ck3r!", "danger");
+      }
+    }
+
+    // Clear query function
+    function clearQuery() {
+      const dropZone = document.getElementById("dropZone");
+      dropZone.innerHTML = `
+        <div class="drop-zone-content">
+          <i class="bi bi-download drop-zone-icon"></i>
+          <h5>>> ARRASTRA OPERADORES AQUÍ <<</h5>
+          <p class="mb-0">// Combina operadores para crear consultas avanzadas //</p>
+        </div>
+      `;
+      dropZone.style.height = '45%';
+      dropZone.style.minHeight = '200px';
+      dropZone.style.display = 'flex';
+      dropZone.style.alignItems = 'center';
+      dropZone.style.justifyContent = 'center';
+      updateQuery();
+    }
+
+    // Copy query function
+    function copyQuery() {
+      const query = document.getElementById("query").textContent;
+
+      if (query && query !== "" && query !== "[INCOMPLETO]") {
+        navigator.clipboard.writeText(query).then(() => {
+          showAlert("[ÉXITO] Consulta copiada al portapapeles", "success");
+        }).catch(() => {
+          showAlert("[ERROR] Error al copiar la consulta", "danger");
+        });
+      } else {
+        showAlert("[ADVERTENCIA] No hay consulta válida para copiar", "warning");
+      }
+    }
+
+    // Enhanced tooltip function
+    function showTooltip(event, text) {
+      event.stopPropagation();
+
+      // Remove existing tooltip
+      if (currentTooltip) {
+        currentTooltip.remove();
+        currentTooltip = null;
+      }
+
+      // Create new tooltip
+      const tooltip = document.createElement('div');
+      tooltip.className = 'custom-tooltip';
+      tooltip.textContent = text;
+      tooltip.style.display = 'block';
+
+      document.body.appendChild(tooltip);
+      currentTooltip = tooltip;
+
+      // Position tooltip
+      const rect = event.target.getBoundingClientRect();
+      const tooltipRect = tooltip.getBoundingClientRect();
+
+      // Calculate position
+      let left = rect.left;
+      let top = rect.bottom + 10;
+
+      // Adjust if tooltip goes off screen
+      if (left + tooltipRect.width > window.innerWidth) {
+        left = window.innerWidth - tooltipRect.width - 10;
+      }
+      if (top + tooltipRect.height > window.innerHeight) {
+        top = rect.top - tooltipRect.height - 10;
+      }
+
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+
+      // Auto remove after 4 seconds
+      setTimeout(() => {
+        if (currentTooltip === tooltip) {
+          tooltip.remove();
+          currentTooltip = null;
+        }
+      }, 4000);
+    }
+
+    // Show alert function
+    function showAlert(message, type) {
+      // Create alert element
+      const alertDiv = document.createElement('div');
+      alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+      alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 1060; min-width: 300px;';
+      alertDiv.innerHTML = `
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      `;
+
+      document.body.appendChild(alertDiv);
+
+      // Auto remove after 3 seconds
+      setTimeout(() => {
+        if (alertDiv.parentNode) {
+          alertDiv.remove();
+        }
+      }, 3000);
+    }
+
+    // Close tooltip on click outside
+    document.addEventListener('click', () => {
+      if (currentTooltip) {
+        currentTooltip.remove();
+        currentTooltip = null;
+      }
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+      if (e.ctrlKey) {
+        switch(e.key) {
+          case 'c':
+            if (e.target.tagName !== 'INPUT') {
+              e.preventDefault();
+              copyQuery();
+            }
+            break;
+          case 'Enter':
+            e.preventDefault();
+            searchGoogle();
+            break;
+          case 'd':
+            e.preventDefault();
+            searchDuckDuckGo();
+            break;
+          case 'Delete':
+            e.preventDefault();
+            clearQuery();
+            break;
+        }
+      }
+    });
+
+    // Initialize tooltips on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add keyboard shortcut info
+      const shortcutInfo = document.createElement('div');
+      shortcutInfo.className = 'position-fixed bottom-0 end-0 p-3 text-muted small';
+      shortcutInfo.innerHTML = `
+        <div class="bg-dark text-success p-2 rounded shadow-sm border border-success">
+          <strong>[ATAJOS_TECLADO]:</strong><br>
+          Ctrl+C: Copiar consulta<br>
+          Ctrl+Enter: Buscar en Google<br>
+          Ctrl+D: Buscar en DuckDuckGo<br>
+          Ctrl+Delete: Limpiar
+        </div>
+      `;
+      document.body.appendChild(shortcutInfo);
+
+      // Hide shortcut info after 5 seconds
+      setTimeout(() => {
+        shortcutInfo.style.display = 'none';
+      }, 5000);
+
+      // Observer to watch for changes in drop zone
+      const dropZone = document.getElementById("dropZone");
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'childList') {
+            // Check if drop zone became empty after removing elements
+            const dorkElements = dropZone.querySelectorAll(".dropped-dork");
+            if (dorkElements.length === 0 && !dropZone.querySelector('.drop-zone-content')) {
+              updateQuery();
+            }
+          }
+        });
+      });
+
+      observer.observe(dropZone, {
+        childList: true,
+        subtree: true
+      });
+    });
+  </script>
+</body>
+</html>
