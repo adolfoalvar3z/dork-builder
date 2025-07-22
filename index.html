@@ -1070,20 +1070,12 @@
             <h3 class="h5 mb-3"><i class="bi bi-terminal" aria-hidden="true"></i> [QUERY_OUTPUT]</h3>
             <div class="query-display" id="query" role="textbox" aria-live="polite" aria-label="Consulta Google Dork generada"></div>
             <div class="mt-3" role="group" aria-label="Acciones de consulta">
-              <div class="d-flex gap-2 mb-3">
+              <div class="d-flex gap-2">
                 <button class="btn search-btn" onclick="searchGoogle()" aria-describedby="search-help">
                   <i class="bi bi-google" aria-hidden="true"></i> BUSCAR EN GOOGLE
                 </button>
                 <button class="btn search-btn-alt" onclick="searchDuckDuckGo()" aria-describedby="duckduckgo-help">
                   <i class="bi bi-search" aria-hidden="true"></i> BUSCAR EN DUCKDUCKGO
-                </button>
-              </div>
-              <div class="d-flex gap-2">
-                <button class="btn btn-outline-light btn-sm" onclick="copyQuery()">
-                  <i class="bi bi-clipboard" aria-hidden="true"></i> COPIAR CONSULTA
-                </button>
-                <button class="btn btn-outline-light btn-sm" onclick="clearQuery()">
-                  <i class="bi bi-trash" aria-hidden="true"></i> LIMPIAR TODO
                 </button>
               </div>
               <span id="search-help" class="sr-only">Ejecutar búsqueda en Google con la consulta generada</span>
